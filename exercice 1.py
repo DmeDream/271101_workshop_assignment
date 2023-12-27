@@ -10,6 +10,7 @@ mpHands = mp.solutions.hands
 hands = mpHands.Hands()
 mpDraw = mp.solutions.drawing_utils
 
+
 while True:
     success, img = cap.read()
     imgRGB = cv2.cvtColor(img, cv2.COLOR_BGR2RGB)
@@ -57,20 +58,44 @@ while True:
                 if id == 20:
                     id20 = int(id)
                     cy20 = cy
-                    if cy20 > cy19:
-                        N -= 1
-                    if cy16 > cy15:
-                        N -= 1
-                    if cy12 > cy11:
-                        N -= 1
-                    if cy8 > cy7:
-                        N -= 1
-                    if cx4 < cx3:
-                        N -= 1
+                    if cx5 > cx17: #Right
+                        if cy20 > cy19:
+                            N -= 1
+                        if cy16 > cy15:
+                            N -= 1
+                        if cy12 > cy11:
+                            N -= 1
+                        if cy8 > cy7:
+                            N -= 1
+                        if cx4 < cx3:
+                            N -= 1
+                    else: #Left
+                        if cy20 > cy19:
+                            N -= 1
+                        if cy16 > cy15:
+                            N -= 1
+                        if cy12 > cy11:
+                            N -= 1
+                        if cy8 > cy7:
+                            N -= 1
+                        if cx4 > cx3:
+                            N -= 1
+                    if cx5 > cx17: #Right
+                        if cy20 < cy19:
+                            cv2.putText(img, "Pinky", (10, 160), cv2.FONT_HERSHEY_PLAIN, 1.5,(180, 222, 0), 2)
+                        if cy16 < cy15:
+                            cv2.putText(img, "Ring finger", (10, 200), cv2.FONT_HERSHEY_PLAIN, 1.5,(160, 333, 0), 2)
+                        if cy12 < cy11:
+                            cv2.putText(img, "Middle finger", (10, 240), cv2.FONT_HERSHEY_PLAIN, 1.5,(120, 444, 0), 2)
+                        if cy8 < cy7:
+                            cv2.putText(img, "Index finger", (10, 280), cv2.FONT_HERSHEY_PLAIN, 1.5,(80, 555, 0), 2)
+                        if cx4 > cx3:
+                            cv2.putText(img, "Thumb", (10, 320), cv2.FONT_HERSHEY_PLAIN, 1.5,(40, 666, 0), 2)
                 mpDraw.draw_landmarks(img, handLms, mpHands.HAND_CONNECTIONS)
 
-    cv2.putText(img, str(int(N)), (90, 70), cv2.FONT_HERSHEY_PLAIN, 3,
-                (255, 0, 255), 3)
+    cv2.putText(img, str(int(N)), (50, 50), cv2.FONT_HERSHEY_PLAIN, 3,
+                (255, 255, 255), 3)
+    cv2.putText(img, "660610823 Thanaboon Jaiproom", (200, 450), cv2.FONT_HERSHEY_PLAIN, 1.6, (10, 666, 0), 2)
     cv2.imshow("Image", img)
     cv2.waitKey(1)
 #Closeing all open windows
