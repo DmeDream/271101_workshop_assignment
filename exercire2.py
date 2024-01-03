@@ -164,13 +164,13 @@ with mp_hand.Hands(min_detection_confidence=0.5,
                     (80, 160, 40), 2)
                     led_2.write(1)
                     Nfing = Nfing+1
-                cv2.putText(image, str(Nfing),(50, 450), cv2.FONT_HERSHEY_PLAIN, 2.1,
-                      (40, 160, 50), 2)
                 if cx4 > cx3:
                     cv2.putText(image, str(finger[0]),(50, 400), cv2.FONT_HERSHEY_PLAIN, 2.1,
                     (40, 160, 50), 2)
                     led_1.write(1)
                     Nfing = Nfing+1
+                cv2.putText(image, str(Nfing),(50, 450), cv2.FONT_HERSHEY_PLAIN, 2.1,
+                      (40, 160, 50), 2)
                 if cx20 > cx18 :
                     led_5.write(0)
                 if cx16 > cx14:
